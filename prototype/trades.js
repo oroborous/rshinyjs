@@ -127,13 +127,45 @@ window.onload = function () {
         ]
     };
 
+    let updateQuantity = (event) => {
+        let tr = $(event.target).parent().parent();
+        let selected = tr.find(":checkbox").is(":checked");
+
+        if (!selected)
+            return;
+
+        let cardname = tr.find(".cardname").text();
+        let price = tr.find(".price").text();
+        let qty = tr.find(".qty").val();
+
+        let tradeFunds = Number(price) * Number(qty);
+        tradesObj.y += tradeFunds;
+        tradesObj.indexLabel = (Number(tradesObj.indexLabel.substring(1)) + tradeFunds).toFixed(0);
+        $("#chartContainer").CanvasJSChart().render();
+    };
+
     let updateChart = (event) => {
+        let tradeFunds = 0;
+        $("tbody").children().each( function() {
+            let tr = $(this);
+            let selected = tr.find(":checkbox").is(":checked");
+            if (selected) {
+                let price = tr.find(".price").text();
+                let qty = tr.find(".qty").val();
+                tradeFunds += Number(price) * Number(qty);
+            }
+        });
+        tradesObj.y = tradeFunds;
+        tradesObj.indexLabel = (Number(tradesObj.indexLabel.substring(1)) + tradeFunds).toFixed(0);
+        $("#chartContainer").CanvasJSChart().render();
+    }
+
+    let updateSelection = (event) => {
         let tr = $(event.target).parent().parent();
         let selected = tr.find(":checkbox").is(":checked");
         let cardname = tr.find(".cardname").text();
         let price = tr.find(".price").text();
         let qty = tr.find(".qty").val();
-        // alert(selected + cardname + price + qty);
 
         let tradeFunds = Number(price) * Number(qty);
         if (!selected)

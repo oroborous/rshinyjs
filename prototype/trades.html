@@ -18,70 +18,87 @@
             text-align: center;
             cursor: pointer;
         }
+
         input[type=number] {
             width: 50%;
         }
+
         td {
             text-align: center;
         }
+
         td.cardname {
             text-align: left;
         }
+
         td.price {
             text-align: right;
         }
+
     </style>
 
 </head>
 <body>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-10">
-                <label class="mt-2">Hide cards with less than</label>
-                <br>
-                <select>
-                    <option>4 copies available</option>
-                    <option>8 copies available</option>
-                    <option>Show all</option>
-                </select>
-                <br>
-                <label class="mt-2">Sort by</label>
-                <br>
-                <select>
-                    <option>Card Name</option>
-                    <option>Price</option>
-                    <option>Copies Available</option>
-                </select>
-                <br>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Trade?</th>
-                        <th>Card Name</th>
-                        <th>Price</th>
-                        <th>Copies Available</th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <!--                <label class="mt-2">Show</label>-->
-                <!--                <br>-->
-                <!--                <select>-->
-                <!--                    <option>Purchase Price</option>-->
-                <!--                    <option>Selling Price</option>-->
-                <!--                </select>-->
-                <br>
-                <button class="mt-4" onclick="window.location='your-sets.html'">Select Another Set</button>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="mt-2 form-label">Hide cards with less than</label>
+                        <br>
+                        <select class="form-select">
+                            <option>4 copies available</option>
+                            <option>8 copies available</option>
+                            <option>Show all</option>
+                        </select>
+                        <br>
+                        <label class="mt form-label">Sort by</label>
+                        <br>
+                        <select class="form-select">
+                            <option>Card Name</option>
+                            <option>Price</option>
+                            <option>Copies Available</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12  ">
+                        <table class="table mt-2">
+                            <thead>
+                            <tr>
+                                <th>Trade?</th>
+                                <th>Card Name</th>
+                                <th>Price</th>
+                                <th>Copies Available</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="col-2 align-items-right">
-                <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <button id="print" class="btn btn-primary mt-4" onclick="window.location='print.html'">Print This Trade!
+                        </button>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-4 align-items-right">
+                        <button class="btn btn-secondary mt-4" onclick="window.location='your-sets.html'">Select Another
+                            Set
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-10">
-                <h4 id="continue">Click here to continue</h4>
-            </div>
-        </div>
+    </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
