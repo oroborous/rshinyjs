@@ -4,6 +4,8 @@ let allCards = params.get("cards");
 let percOwned = Number(params.get("perc")) / 100;
 let cardsOwned = params.get("owned");
 
+let click = () => window.location = `price-history.html?set=${setName}&cards=${allCards}&perc=${percOwned}&owned=${cardsOwned}`;
+
 let cardTypes = ["Artifact", "Creature",
     "Enchantment", "Instant", "Land", "Sorcery",
     "Battle", "Conspiracy", "Dungeon", "Phenomenon",
@@ -33,18 +35,15 @@ for (let i = 0; i < cardTypes.length; i++) {
     let cardType = cardTypes[i];
     let totalCards = cardsOfTypeInSet[i];
     let numOwned = Math.round(cardsOfTypeInSet[i] * percOwned);
-    let click = () => window.location = `price-history.html?set=${setName}&cards=${totalCards}&perc=${percOwned}&owned=${numOwned}`;
 
     all.push({
         y: totalCards,
         label: cardType,
-        click: click
     });
     owned.push({
         y: numOwned,
         label: cardType,
         indexLabel: `${percOwned}%`,
-        click: click
     })
 }
 
@@ -86,8 +85,8 @@ let options = {
 };
 
 window.onload = function () {
-
     $("#chartContainer").CanvasJSChart(options);
+    $("#continue").on("click", click);
 }
 
 

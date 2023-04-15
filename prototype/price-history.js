@@ -4,6 +4,8 @@ let allCards = params.get("cards");
 let percOwned = Number(params.get("perc")) / 100;
 let cardsOwned = params.get("owned");
 
+let click = () => window.location = `trades.html?set=${setName}&cards=${allCards}&perc=${percOwned}&owned=${cardsOwned}`;
+
 let all = [];
 let owned = [];
 
@@ -83,6 +85,7 @@ window.onload = function () {
 
 
     $("#chartContainer").CanvasJSChart(options);
+    $("#continue").on("click", click);
 }
 
 
