@@ -1,31 +1,30 @@
+let setNames = ["Iceage", "Urza's Saga", "Exodus", "Weatherlight", "Tempest",
+    "Portal", "Mirage", "Alliances", "Homelands", "Chronicles", "Prophecy"];
+let all = [];
+let owned = [];
+
+
+for (let setName of setNames) {
+    // average set contains 200 - 450 cards
+    let totalCards = Math.floor(Math.random() * 250) + 200;
+    let numOwned = Math.round(totalCards * Math.random());
+    let percOwned = Math.round(numOwned / totalCards * 100);
+    let click = () => window.location = `card-types.html?set=${setName}&cards=${totalCards}&perc=${percOwned.toFixed(1)}&owned=${numOwned}`;
+
+    all.push({
+        y: totalCards,
+        label: setName,
+        click: click
+    });
+    owned.push({
+        y: numOwned,
+        label: setName,
+        indexLabel: `${percOwned}%`,
+        click: click
+    })
+}
+
 window.onload = function () {
-    let setNames = ["Iceage", "Urza's Saga", "Exodus", "Weatherlight", "Tempest",
-        "Portal", "Mirage", "Alliances", "Homelands", "Chronicles", "Prophecy"];
-    let all = [];
-    let owned = [];
-
-
-    for (let setName of setNames) {
-        // average set contains 200 - 450 cards
-        let totalCards = Math.floor(Math.random() * 250) + 200;
-        let numOwned = Math.round(totalCards * Math.random());
-        let percOwned = Math.round(numOwned / totalCards * 100);
-        let click = () => window.location = `card-types.html?set=${setName}&cards=${totalCards}&perc=${percOwned.toFixed(1)}&owned=${numOwned}`;
-
-        all.push({
-            y: totalCards,
-            label: setName,
-            click: click
-        });
-        owned.push({
-            y: numOwned,
-            label: setName,
-            indexLabel: `${percOwned}%`,
-            click: click
-        })
-    }
-
-
     let options = {
         animationEnabled: true,
         theme: "light2",
