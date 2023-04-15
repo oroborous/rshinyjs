@@ -1,6 +1,9 @@
 window.onload = function () {
-    let setNames = ["Iceage", "Urza's Saga", "Exodus", "Weatherlight", "Tempest",
-        "Portal", "Mirage", "Alliances", "Homelands", "Chronicles", "Prophecy"];
+
+    let setNames = ["Artifact", "Battle", "Conspiracy", "Creature",
+        "Dungeon", "Enchantment", "Instant", "Land", "Phenomenon",
+        "Plane", "Planeswalker", "Scheme", "Socery", "Tribal",
+        "Vanguard"];
     let all = [];
     let owned = [];
 
