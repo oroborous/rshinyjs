@@ -57,56 +57,81 @@ let randomCards = ["Agile Traitors' Evocation of Nothing",
     "Wounding Deflection"];
 
 
-
-
-let options = {
-    animationEnabled: true,
-    theme: "light2",
-    title: {
-        text: `Your ${setName} Cards by Type`
-    },
-    axisY2: {
-        lineThickness: 0
-    },
-    toolTip: {
-        shared: true
-    },
-    legend: {
-        verticalAlign: "top",
-        horizontalAlign: "center"
-    },
-    data: [
-        {
-            type: "column",
-            showInLegend: true,
-            name: "Your Trades",
-            axisYType: "secondary",
-            color: "#CD853F",
-            dataPoints: owned,
-        },
-        {
-            type: "column",
-            showInLegend: true,
-            name: "Cards to Buy",
-            axisYType: "secondary",
-            color: "#62C9C3",
-            dataPoints: all
-        }
-    ]
-};
-
 window.onload = function () {
-    $("#chartContainer").CanvasJSChart(options);
-    $("#continue").on("click", click);
 
-    const averageCardPrice = 14.38;
+   const averageCardPrice = 14.38;
+   const costOfCardsToBuy = averageCardPrice * (allCards - cardsOwned);
 
     let randomNumCards = Math.round(Math.random() * randomCards.length);
     randomCards.sort(() => Math.random() < 0.5 ? -1 : 1);
 
     for (let i = 0; i < randomNumCards; i++) {
         let randomCardName = randomCards[i];
-        let randomPrice = averageCardPrice + ((Math.random() * 10) - 5)
+        let randomPrice = (averageCardPrice + ((Math.random() * 10) - 5)).toFixed(2);
+        let randomCopies = Math.round(Math.random() * 12) + 4;
 
+        let tr = `<tr><td><input type="checkbox"></td>
+<td class="cardname">${randomCardName}</td>
+<td class="price">${randomPrice}</td>
+<td><input type="number" value="${randomCopies}" min="0" max="${randomCopies}"></td></tr>`;
+
+        $("tbody").append(tr);
     }
+
+    let allObj = {
+        y: costOfCardsToBuy,
+        label: "Cards to Buy",
+        indexLabel: `${percOwned}%`,
+    };
+
+    let tradesObj = {
+        y: 0,
+        label: "Your Trades",
+        indexLabel: `${percOwned}%`,
+    };
+
+    let options = {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+            text: `Trade Cards to Complete Your ${setName} Set`
+        },
+        axisY2: {
+            lineThickness: 0
+        },
+        toolTip: {
+            shared: true
+        },
+        legend: {
+            verticalAlign: "top",
+            horizontalAlign: "center"
+        },
+        data: [
+            {
+                type: "column",
+                showInLegend: true,
+                name: "Your Trades",
+                axisYType: "secondary",
+                color: "#CD853F",
+                dataPoints: [tradesObj],
+            },
+            {
+                type: "column",
+                showInLegend: true,
+                name: "Cards to Buy",
+                axisYType: "secondary",
+                color: "#62C9C3",
+                dataPoints: [allObj]
+            }
+        ]
+    };
+
+    let updateChart = () => {
+
+    };
+
+    $("input[type=number]").change(updateChart);
+    $(":checkbox").change(updateChart);
+
+    $("#chartContainer").CanvasJSChart(options);
 }
