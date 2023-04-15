@@ -59,8 +59,8 @@ let randomCards = ["Agile Traitors' Evocation of Nothing",
 
 window.onload = function () {
 
-   const averageCardPrice = 14.38;
-   const costOfCardsToBuy = averageCardPrice * (allCards - cardsOwned);
+    const averageCardPrice = 14.38;
+    const costOfCardsToBuy = averageCardPrice * (allCards - cardsOwned);
 
     let randomNumCards = Math.round(Math.random() * randomCards.length);
     randomCards.sort(() => Math.random() < 0.5 ? -1 : 1);
@@ -73,7 +73,7 @@ window.onload = function () {
         let tr = `<tr><td><input type="checkbox"></td>
 <td class="cardname">${randomCardName}</td>
 <td class="price">${randomPrice}</td>
-<td><input type="number" value="${randomCopies}" min="0" max="${randomCopies}"></td></tr>`;
+<td><input class="qty" type="number" value="${randomCopies}" min="0" max="${randomCopies}"></td></tr>`;
 
         $("tbody").append(tr);
     }
@@ -81,13 +81,14 @@ window.onload = function () {
     let allObj = {
         y: costOfCardsToBuy,
         label: "Cards to Buy",
-        indexLabel: `${percOwned}%`,
+        indexLabel: `${costOfCardsToBuy}`,
+
     };
 
     let tradesObj = {
         y: 0,
         label: "Your Trades",
-        indexLabel: `${percOwned}%`,
+        indexLabel: `$0`,
     };
 
     let options = {
@@ -126,8 +127,21 @@ window.onload = function () {
         ]
     };
 
-    let updateChart = () => {
+    let updateChart = (event) => {
+        let tr = $(event.target).parent().parent();
+        let selected = tr.find(":checkbox").is(":checked");
+        let cardname = tr.find(".cardname").text();
+        let price = tr.find(".price").text();
+        let qty = tr.find(".qty").val();
+        // alert(selected + cardname + price + qty);
 
+        let tradeFunds = Number(price) * Number(qty);
+        if (!selected)
+            tradeFunds *= -1;
+
+        tradesObj.y += tradeFunds;
+        tradesObj.indexLabel = (Number(tradesObj.indexLabel.substring(1)) + tradeFunds).toFixed(0);
+        $("#chartContainer").CanvasJSChart().render();
     };
 
     $("input[type=number]").change(updateChart);
