@@ -71,7 +71,7 @@ let options = {
             showInLegend: true,
             name: "Your Cards",
             axisYType: "secondary",
-            color: "#7E8F74",
+            color: "#CD853F",
             dataPoints: owned,
         },
         {
@@ -79,7 +79,7 @@ let options = {
             showInLegend: true,
             name: "All Cards",
             axisYType: "secondary",
-            color: "#F0D6A7",
+            color: "#62C9C3",
             dataPoints: all
         }
     ]

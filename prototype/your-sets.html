@@ -11,36 +11,43 @@
 
     <title>Your Sets - MTG Collection Explorer</title>
 
+    <style>
+        h4 {
+            text-align: center;
+        }
+    </style>
+
     <script src="your-sets.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
-            <div class="col col-10">
-
+            <div class="col-10">
+                <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
             </div>
-            <div class="col col-2 align-items-right">
-                <label>Order by</label>
+            <div class="col-2 align-items-right">
+                <label mt-2>Order by</label>
                 <br>
                 <select>
                     <option>Set Release Date</option>
                     <option>Percent Complete</option>
                 </select>
                 <br>
-                <label>Show</label>
+                <label mt-2>Show</label>
                 <br>
                 <select>
                     <option>Card Count</option>
                     <option>Dollars</option>
                 </select>
+                <br>
+                <button class="mt-4" onclick="window.location='index.html'">View Another Collection</button>
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+            <div class="col-10">
+                <h4>Click on any set in the chart to continue</h4>
             </div>
         </div>
-        <h4>Click on any set in the chart to continue</h4>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
