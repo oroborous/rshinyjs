@@ -10,28 +10,45 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>MTG Collection Explorer</title>
+
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Collection</h1>
+
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 aria-label="upload">Upload</h2>
+                <h1>MTG Collection Explorer</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col card mt-3 p-3">
+                <h2 aria-label="upload">Upload your collection</h2>
                 <div>
                     <form action="your-sets.html">
                         <input type="file" id="upload" aria-labelledby="upload">
                         <button class="btn btn-primary">Upload</button>
                     </form>
                 </div>
+                <p>
+                    Upload your card collection as a .csv file.
+                </p>
             </div>
-            <div class="col">
-                <h2>View</h2>
+            <div class="col card mt-3 p-3">
+                <h2>View your saved collection</h2>
                 <div>
                     <form action="your-sets.html">
                         <input type="email" id="view" placeholder="Email Address">
                         <button class="btn btn-primary">View</button>
                     </form>
                 </div>
+                <p>
+                    Just want to explore? Enter <code>user@email.com</code> above.
+                </p>
             </div>
         </div>
 
