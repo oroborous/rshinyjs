@@ -81,7 +81,7 @@ window.onload = function () {
     let allObj = {
         y: costOfCardsToBuy,
         label: "Cards to Buy",
-        indexLabel: `${costOfCardsToBuy}`,
+        indexLabel: `${costOfCardsToBuy.toFixed(0)}`,
 
     };
 
@@ -134,8 +134,8 @@ window.onload = function () {
             let selected = tr.find(":checkbox").is(":checked");
             if (selected) {
                 let cardname = tr.find(".cardname").text();
-                let price = tr.find(".price").text();
-                let qty = tr.find(".qty").val();
+                let price = Number(tr.find(".price").text());
+                let qty = Number(tr.find(".qty").val());
                 trades.push({
                     cardname: cardname,
                     price: price,

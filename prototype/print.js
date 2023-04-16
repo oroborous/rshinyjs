@@ -8,11 +8,16 @@ $(function () {
         $("h1").text(`Your ${setName} Tradelist`);
     }
 
-    let tradesArray = trades ? tradesArray = JSON.parse(trades) : [];
+    let tradesArray = trades ? JSON.parse(trades) : [];
+
+    let tradeValue = tradesArray.reduce(function (sum, trade) {
+        return sum + Number(trade.price);
+    }, 0);
 
     $("#json").html(`${JSON.stringify({
         user: "user@email.com",
         date: formatDate(new Date()),
+        tradeValue: tradeValue,
         trades: tradesArray
     }, null, 3)}`).css({"font-family": "monospace"})
         .attr("rows", tradesArray.length * 5 + 6);

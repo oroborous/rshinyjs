@@ -15,6 +15,9 @@
         h4 {
             text-align: center;
         }
+        select, button {
+            width: 100%;
+        }
     </style>
 
     <script src="your-sets.js"></script>
@@ -26,20 +29,20 @@
                 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
             </div>
             <div class="col-2 align-items-right">
-                <label class="mt-2 form-label">Order by</label>
+                <label class="form-label">Order by</label>
                 <br>
                 <select class="form-select">
                     <option>Set Release Date</option>
                     <option>Percent Complete</option>
                 </select>
                 <br>
-                <label class="mt-2 form-label">Show</label>
+                <label class="mt-1 form-label">Show</label>
                 <br>
                 <select class="form-select">
                     <option>Card Count</option>
                     <option>Dollars</option>
                 </select>
-                <br>
+                <hr>
                 <button class="btn btn-secondary mt-4" onclick="window.location='index.html'">View Another Collection</button>
             </div>
         </div>
